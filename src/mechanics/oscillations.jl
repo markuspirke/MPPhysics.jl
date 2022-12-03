@@ -28,13 +28,15 @@ function simulate(p::Pendulum, tspan; kwargs...)
     t, ps, qs
 end
 
-function cartesian(qs, p::Pendulum)
-    xs = Float64[]
-    ys = Float64[]
-    for q in qs
-        x, y = polarcoordinates(p.l, q)
-        push!(xs, y)
-        push!(ys, -x)
-    end
-    xs, ys
+function integrate(p::Pendulum, tspan; kwargs...)
+    p₀, q₀ = startvalues(p)
+    prob = HamiltonianProblem(p, p₀, q₀, tspan)
+    init(prob, Tsit5(); kwargs...)
+end
+
+
+function cartesian(q, p::Pendulum)
+    y, x = polarcoordinates(p.l, q)
+    y = -y # because of defintion of the angle
+    x, y
 end
