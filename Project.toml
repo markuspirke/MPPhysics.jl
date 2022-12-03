@@ -7,6 +7,7 @@ version = "0.1.0"
 DiffEqPhysics = "055956cb-9e8b-5191-98cc-73ae4a59e68a"
 DifferentialEquations = "0c46a032-eb83-5123-abaf-570d42b7fbaa"
 ForwardDiff = "f6369f11-7733-5829-9624-2563aa707210"
+Observables = "510215fc-4207-5dde-b226-833fc4488ee2"
 
 [compat]
 julia = "1.6"
