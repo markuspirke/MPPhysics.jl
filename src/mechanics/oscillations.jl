@@ -1,5 +1,3 @@
-using DifferentialEquations, DiffEqPhysics
-
 struct Pendulum
     m
     g
@@ -18,11 +16,25 @@ function startvalues(p::Pendulum)
     p₀, q₀
 end
 
-function simulate(p::Pendulum, tspan)
+function simulate(p::Pendulum, tspan; kwargs...)
     p₀, q₀ = startvalues(p)
     prob = HamiltonianProblem(p, p₀, q₀, tspan)
-    sol = solve(prob, Tsit5())
+    sol = solve(prob, Tsit5(); kwargs...)
 
-    sol
+    t = sol.t
+    qs = [u[2] for u in sol.u]
+    ps = [u[1] for u in sol.u]
+
+    t, ps, qs
 end
 
+function cartesian(qs, p::Pendulum)
+    xs = Float64[]
+    ys = Float64[]
+    for q in qs
+        x, y = polarcoordinates(p.l, q)
+        push!(xs, y)
+        push!(ys, -x)
+    end
+    xs, ys
+end
