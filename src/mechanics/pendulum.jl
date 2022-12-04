@@ -16,7 +16,7 @@ function startvalues(p::Pendulum)
     p₀, q₀
 end
 
-function simulate(p::Pendulum, tspan; kwargs...)
+function trajectory(p::Pendulum, tspan; kwargs...)
     p₀, q₀ = startvalues(p)
     prob = HamiltonianProblem(p, p₀, q₀, tspan)
     sol = solve(prob, Tsit5(); kwargs...)
