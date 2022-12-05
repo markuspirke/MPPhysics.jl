@@ -1,6 +1,7 @@
 *.jl.*.cov
 *.jl.cov
 *.jl.mem
+todo.org
 **/foo*
 /Manifest.toml
 /docs/build/
