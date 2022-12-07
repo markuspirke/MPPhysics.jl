@@ -1,4 +1,4 @@
-mutable struct Pendulum
+struct Pendulum
     g
     m
     l
@@ -7,7 +7,8 @@ mutable struct Pendulum
 end
 
 function (pen::Pendulum)(p, q, param)
-    p^2 / (2 * pen.m * (pen.l)^2) - pen.m * pen.g * pen.l * cos(q)
+    H = p^2 / (2 * pen.m * (pen.l)^2) - pen.m * pen.g * pen.l * cos(q)
+    H
 end
 
 function startvalues(pen::Pendulum)
@@ -36,7 +37,7 @@ end
 
 
 function cartesian(q, pen::Pendulum)
-    y, x = polarcoordinates(pen.l, q)
+    y, x = polarcoordinates(q, pen.l)
     y = -y # because of defintion of the angle
     x, y
 end
