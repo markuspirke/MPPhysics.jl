@@ -1,3 +1,8 @@
+"""
+    struct DoublePendulum
+
+This type stores all the parameters and start values of a double pendulum.
+"""
 struct DoublePendulum
     g
     m₁
@@ -9,7 +14,11 @@ struct DoublePendulum
     dϕ₁
     dϕ₂
 end
+"""
+    function (dpen::DoublePendulum)(p, q, param)
 
+Hamiltonian of a double pendulum.
+"""
 function (dpen::DoublePendulum)(p, q, param)
     p₁, p₂ = p
     q₁, q₂ = q
@@ -22,7 +31,11 @@ function (dpen::DoublePendulum)(p, q, param)
 
     H
 end
+"""
+    function startvalues(dpen::DoublePendulum)
 
+Returns the starting values of a double pendulum as p⃗, q⃗.
+"""
 function startvalues(dpen::DoublePendulum)
     q₁ = dpen.ϕ₁
     q₂ = dpen.ϕ₂
@@ -31,13 +44,22 @@ function startvalues(dpen::DoublePendulum)
 
     [p₁, p₂], [q₁, q₂]
 end
-
+"""
+    function integrate(p::DoublePendulum, tspan; kwargs...)
+        
+This integrates the ODE for the double pendulum. This can then be used to 
+step wise get the trajectory. 
+"""
 function integrate(p::DoublePendulum, tspan; kwargs...)
     p₀, q₀ = startvalues(p)
     prob = HamiltonianProblem(p, p₀, q₀, tspan)
     init(prob, Tsit5(); kwargs...)
 end
-
+"""
+    function cartesian(q, dpen::DoublePendulum)
+        
+Return cartesian coordinates of the generalized coordinates of the double pendulum.
+"""
 function cartesian(q, dpen::DoublePendulum)
     y₁, x₁ = polarcoordinates(dpen.l₁, q[1])
     y₁ = -y₁
