@@ -2,6 +2,7 @@ module MPPhysics
 using DifferentialEquations
 using DiffEqPhysics
 export
+    HamiltonianSystem, integrate, trajectory,
     polarcoordinates,
     simulate, cartesian,
     Pendulum, startvalues,
