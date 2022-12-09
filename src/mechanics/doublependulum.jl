@@ -3,7 +3,7 @@
 
 This type stores all the parameters and start values of a double pendulum.
 """
-struct DoublePendulum
+struct DoublePendulum <: HamiltonianSystem
     g
     m₁
     m₂
@@ -43,17 +43,6 @@ function startvalues(dpen::DoublePendulum)
     p₂ = dpen.m₂ * dpen.l₂^2 * dpen.dϕ₂ + dpen.m₂ * dpen.l₁ * dpen.l₂ * dpen.dϕ₁ * cos(dpen.ϕ₁ - dpen.ϕ₂)
 
     [p₁, p₂], [q₁, q₂]
-end
-"""
-    function integrate(p::DoublePendulum, tspan; kwargs...)
-        
-This integrates the ODE for the double pendulum. This can then be used to 
-step wise get the trajectory. 
-"""
-function integrate(p::DoublePendulum, tspan; kwargs...)
-    p₀, q₀ = startvalues(p)
-    prob = HamiltonianProblem(p, p₀, q₀, tspan)
-    init(prob, Tsit5(); kwargs...)
 end
 """
     function cartesian(q, dpen::DoublePendulum)
