@@ -35,7 +35,7 @@ end
 
 Returns cartesian coordinates of the generalized coordinates.
 """
-function cartesian(q, pen::Pendulum)
+function cartesian(pen::Pendulum, q)
     y, x = polarcoordinates(pen.l, q)
     y = -y # because of defintion of the angle
     x, y
