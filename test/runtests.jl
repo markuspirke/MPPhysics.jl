@@ -2,6 +2,7 @@ using MPPhysics
 using Test
 
 @testset "MPPhysics.jl" begin
+    include("types.jl")
     include("doublependulum.jl")
     include("coordinates.jl")
     include("pendulum.jl")
