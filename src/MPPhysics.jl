@@ -25,9 +25,9 @@ for inc ∈ readdir(joinpath(@__DIR__, "mechanics"), join=true)
     include(inc)
 end
 
-for inc ∈ readdir(joinpath(@__DIR__, "Thermodynamics"), join=true)
-    !endswith(inc, ".jl") && continue
-    startswith(split(inc, "/")[end], "foo") && continue
-    include(inc)
-end
+# for inc ∈ readdir(joinpath(@__DIR__, "Thermodynamics"), join=true)
+#     !endswith(inc, ".jl") && continue
+#     startswith(split(inc, "/")[end], "foo") && continue
+#     include(inc)
+# end
 end

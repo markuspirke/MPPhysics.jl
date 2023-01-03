@@ -51,4 +51,4 @@ Thats it. You can also use integrate and step in order to do time stepping, whic
 With that you can just simulate every Hamiltonian system in your classical mechanics course!
 
 One such fascinating non linear dynamical system is the double pendulum (which is already implemented):
-[![double pendulum](https://github.com/mpirke/MPPhysics.jl/blob/main/doublependulum.gif)]
+![double pendulum](https://github.com/mpirke/MPPhysics.jl/blob/main/doublependulum.gif)
