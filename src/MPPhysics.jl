@@ -1,9 +1,9 @@
 module MPPhysics
 using DifferentialEquations
 using DiffEqPhysics
-using StaticArrays
 using LinearAlgebra
 using AngleBetweenVectors
+using Statistics
 export
     Position2D, Position, SO2,
     HamiltonianSystem, integrate, trajectory,
@@ -12,7 +12,9 @@ export
     Pendulum, startvalues,
     DoublePendulum,
     Spring, SpringMass,
-    MovingPendulum, lagrangian
+    MovingPendulum, lagrangian,
+    CoupledMovingPendulum
+# Room2D
 
 # Write your package code here.
 include("types.jl")
@@ -23,4 +25,9 @@ for inc ∈ readdir(joinpath(@__DIR__, "mechanics"), join=true)
     include(inc)
 end
 
+for inc ∈ readdir(joinpath(@__DIR__, "Thermodynamics"), join=true)
+    !endswith(inc, ".jl") && continue
+    startswith(split(inc, "/")[end], "foo") && continue
+    include(inc)
+end
 end

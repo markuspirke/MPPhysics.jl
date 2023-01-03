@@ -35,7 +35,6 @@ end
 function legendre(mpen::MovingPendulum, p, q)
     pₓ, pϕ = p
     dx, dϕ = inverse_generalized_momenta(mpen, p, q)
-    @show dx, dϕ
     H = pₓ * dx + pϕ * dϕ - lagrangian(mpen, q, [dx, dϕ])
     H
 end
