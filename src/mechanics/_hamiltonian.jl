@@ -23,8 +23,9 @@ function trajectory(hs::HamiltonianSystem, tspan; kwargs...)
     sol = solve(prob, Tsit5(); kwargs...)
     t = sol.t
     dgf = length(p₀s)
-    ps = [u[1:dgf] for u in sol.u]
-    qs = [u[dgf+1:end] for u in sol.u]
+    us = [[u...] for u in sol.u]
+    ps = [u[1:dgf] for u in us]
+    qs = [u[dgf+1:end] for u in us]
 
     t, ps, qs
 end
