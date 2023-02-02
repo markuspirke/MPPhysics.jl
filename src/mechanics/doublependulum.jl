@@ -1,20 +1,4 @@
 """
-    struct DoublePendulum
-
-This type stores all the parameters and start values of a double pendulum.
-"""
-struct DoublePendulum <: HamiltonianSystem
-    g
-    m₁
-    m₂
-    l₁
-    l₂
-    ϕ₁
-    ϕ₂
-    dϕ₁
-    dϕ₂
-end
-"""
     function (dpen::DoublePendulum)(p, q, param)
 
 Hamiltonian of a double pendulum.

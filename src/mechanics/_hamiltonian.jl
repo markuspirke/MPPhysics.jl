@@ -1,5 +1,4 @@
 abstract type HamiltonianSystem end
-
 """
     function integrate(pen::Pendulum, tspan; kwargs...)
 
@@ -28,4 +27,49 @@ function trajectory(hs::HamiltonianSystem, tspan; kwargs...)
     qs = [u[dgf+1:end] for u in us]
 
     t, ps, qs
+end
+
+"""
+    struct Pendulum
+
+This type stores all the parameters and start values of a simple ideal pendulum.
+"""
+struct Pendulum <: HamiltonianSystem
+    g
+    m
+    l
+    ϕ₀
+    dϕ₀
+end
+
+"""
+    struct DoublePendulum
+
+This type stores all the parameters and start values of a double pendulum.
+"""
+struct DoublePendulum <: HamiltonianSystem
+    g
+    m₁
+    m₂
+    l₁
+    l₂
+    ϕ₁
+    ϕ₂
+    dϕ₁
+    dϕ₂
+end
+
+struct MovingPendulum <: HamiltonianSystem
+    m₁
+    x
+    dx
+    pen::Pendulum
+end
+
+struct CoupledMovingPendulum <: HamiltonianSystem
+    mpen1::MovingPendulum
+    mpen2::MovingPendulum
+    k # coupling constant
+    l # length of spring
+    # some spring ...
 end

@@ -1,10 +1,3 @@
-struct MovingPendulum <: HamiltonianSystem
-    m₁
-    x
-    dx
-    pen::Pendulum
-end
-
 function lagrangian(mpen::MovingPendulum, q, v)
     x, ϕ = q
     dx, dϕ = v

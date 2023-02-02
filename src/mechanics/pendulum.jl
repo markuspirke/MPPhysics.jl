@@ -1,16 +1,4 @@
 """
-    struct Pendulum
-
-This type stores all the parameters and start values of a simple ideal pendulum.
-"""
-struct Pendulum <: HamiltonianSystem
-    g
-    m
-    l
-    ϕ₀
-    dϕ₀
-end
-"""
     function (pen::Pendulum)(p, q, param)
 
 Hamiltonian of a simple pendulum.
