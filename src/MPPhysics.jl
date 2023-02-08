@@ -14,7 +14,8 @@ export
     DoublePendulum,
     Spring, SpringMass,
     MovingPendulum, lagrangian,
-    CoupledMovingPendulum
+    CoupledMovingPendulum,
+    initialize_kuramoto
 # Room2D
 
 # Write your package code here.

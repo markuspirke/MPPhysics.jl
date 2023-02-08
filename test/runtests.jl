@@ -7,4 +7,5 @@ using Test
     include("coordinates.jl")
     include("pendulum.jl")
     include("moving_pendulum.jl")
+    include("kuramoto.jl")
 end
