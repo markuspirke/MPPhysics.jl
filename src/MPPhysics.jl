@@ -4,6 +4,7 @@ using DiffEqPhysics
 using LinearAlgebra
 using AngleBetweenVectors
 using Statistics
+using Distributions
 export
     Position2D, Position, SO2,
     HamiltonianSystem, integrate, trajectory,
@@ -25,6 +26,11 @@ for inc ∈ readdir(joinpath(@__DIR__, "mechanics"), join=true)
     include(inc)
 end
 
+for inc ∈ readdir(joinpath(@__DIR__, "ComplexSystems"), join=true)
+    !endswith(inc, ".jl") && continue
+    startswith(split(inc, "/")[end], "foo") && continue
+    include(inc)
+end
 # for inc ∈ readdir(joinpath(@__DIR__, "Thermodynamics"), join=true)
 #     !endswith(inc, ".jl") && continue
 #     startswith(split(inc, "/")[end], "foo") && continue
