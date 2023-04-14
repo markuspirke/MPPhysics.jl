@@ -34,7 +34,7 @@ end
 
 This type stores all the parameters and start values of a simple ideal pendulum.
 """
-struct Pendulum <: HamiltonianSystem
+mutable struct Pendulum <: HamiltonianSystem
     g
     m
     l
